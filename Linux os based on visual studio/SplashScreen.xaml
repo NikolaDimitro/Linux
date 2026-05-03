@@ -1,0 +1,33 @@
+<Window x:Class="LinuxMintOS.SplashScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Linux Mint OS"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Height="400"
+        Width="600"
+        Background="#2d5016"
+        Foreground="White"
+        AllowsTransparency="False">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <!-- Logo/Title -->
+            <TextBlock Text="🍃" FontSize="80" TextAlignment="Center" Margin="0,0,0,20"/>
+            <TextBlock Text="Linux Mint OS" FontSize="32" FontWeight="Bold" TextAlignment="Center" Margin="0,0,0,10"/>
+            <TextBlock Text="Simulator v1.0" FontSize="16" TextAlignment="Center" Margin="0,0,0,40" Opacity="0.8"/>
+
+            <!-- Loading Bar -->
+            <ProgressBar x:Name="LoadingBar" Height="8" Width="300" Background="#1a3a0b" 
+                         Foreground="#4CAF50" Margin="0,0,0,20"/>
+
+            <!-- Status Text -->
+            <TextBlock x:Name="StatusText" Text="Initializing system..." FontSize="12" 
+                       TextAlignment="Center" Margin="0,0,0,10" Opacity="0.7"/>
+
+            <!-- Boot Messages -->
+            <TextBlock x:Name="BootMessages" Text="" FontSize="10" FontFamily="Courier New"
+                       TextAlignment="Center" Foreground="#00FF00" Margin="20,0"/>
+        </StackPanel>
+    </Grid>
+</Window>
