@@ -1,5 +1,7 @@
 # Linux Mint OS Simulator
 
+#Read the installation instructions!!
+
 A complete operating system simulator built with **C#** and **WPF (.NET Framework)** in Visual Studio. This project replicates the Linux Mint desktop experience with a functional GUI that includes file management, terminal, text editor, and system settings.
 
 ## Features
