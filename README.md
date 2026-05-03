@@ -2,38 +2,38 @@
 This is a mini linux based on visual studio
 # MiniLinux (C# / Visual Studio)
 
-Това е мини Linux shell симулатор, написан на **C#** и подходящ за работа във **Visual Studio 2022**.
+This is a mini Linux shell simulator written in **C#** and suitable for working in **Visual Studio 2022**.
 
-## Какво получаваш
+## What you get
 
-- In-memory файлова система (без реален достъп до диска)
-- Команди като в Linux: `ls`, `cd`, `pwd`, `cat`, `touch`, `mkdir`, `rm`, `echo`, `history`, `clear`, `exit`
-- Готов проект, който можеш да стартираш веднага
+- In-memory file system (no real disk access)
+- Linux-like commands: `ls`, `cd`, `pwd`, `cat`, `touch`, `mkdir`, `rm`, `echo`, `history`, `clear`, `exit`
+- Ready-made project that you can run immediately
 
-## Структура на файловете
+## File structure
 
-- `MiniLinux/MiniLinux.csproj` – .NET проект
-- `MiniLinux/Program.cs` – входна точка
-- `MiniLinux/MiniShell.cs` – парсване и изпълнение на команди
-- `MiniLinux/MiniFileSystem.cs` – логика на виртуалната файлова система
-- `MiniLinux/FileSystemNode.cs` – базов клас за node
-- `MiniLinux/DirectoryNode.cs` – директория
-- `MiniLinux/FileNode.cs` – файл
+- `MiniLinux/MiniLinux.csproj` – .NET project
+- `MiniLinux/Program.cs` – entry point
+- `MiniLinux/MiniShell.cs` – parsing and executing commands
+- `MiniLinux/MiniFileSystem.cs` – virtual file system logic
+- `MiniLinux/FileSystemNode.cs` – base class for node
+- `MiniLinux/DirectoryNode.cs` – directory
+- `MiniLinux/FileNode.cs` – file
 
-## Стартиране във Visual Studio
+## Launch in Visual Studio
 
-1. Отвори Visual Studio 2022.
+1. Open Visual Studio 2022.
 2. `File -> Open -> Project/Solution`.
-3. Избери `MiniLinux/MiniLinux.csproj`.
-4. Натисни `F5` (или `Ctrl+F5`) за старт.
+3. Select `MiniLinux/MiniLinux.csproj`.
+4. Press `F5` (or `Ctrl+F5`) to start.
 
-## Стартиране от терминал
+## Start from terminal
 
 ```bash
 dotnet run --project MiniLinux/MiniLinux.csproj
 ```
 
-## Примерни команди
+## Sample commands
 
 ```text
 pwd
@@ -42,15 +42,13 @@ cat welcome.txt
 mkdir projects
 cd projects
 touch todo.txt
-echo "учи C#" > todo.txt
+echo "learn C#" > todo.txt
 cat todo.txt
 history
 ```
 
-## Идеи за надграждане
+## Upgrade ideas
 
-- Поддръжка на `cp`, `mv`, `find`
-- Права за достъп (`rwx`)
-- Потребители (`root`, `user`)
-- Pipe оператори (`|`) между команди
-- Запазване на файловата система в JSON
+- Support for `cp`, `mv`, `find`
+- Permissions (`rwx`)
+- Users (`root`, `user`)
