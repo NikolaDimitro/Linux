@@ -37,7 +37,8 @@ LinuxMintOS/
 3. **Update App.xaml** with the styling resources
 4. **Add all window classes** (FileManagerWindow, TerminalWindow, SettingsWindow, TextEditorWindow)
 5. **Build the solution** (Ctrl+Shift+B)
-6. **Run the application** (F5)
+6. **Install Microsoft.Web.WebView2 - click right button on the project, click Manage NuGet packages and copy the name
+7. **Run the application** (F5)
 
 ## Main Features Explained
 
