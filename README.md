@@ -46,15 +46,15 @@ LinuxMintOS/
 ## Main Features Explained
 
 ### Desktop
-- Green-themed background matching Linux Mint design
-- Quick-access buttons for File Manager, Terminal, Settings, and Text Editor
+- Walpaper background 
+- Quick-access buttons for File Manager, Terminal, Settings, Text Editor and Browser
 - Fully windowed application with customizable resolution
 
 ### Taskbar
 - **Menu Button** - System menu with application information
 - **Application Launcher** - Quick access to open applications
 - **System Tray** - Real-time clock, volume, battery, and network indicators
-- Dark background with green accents for Linux Mint aesthetic
+- Dark background 
 
 ### File Manager
 - Browse local file system
@@ -80,6 +80,10 @@ LinuxMintOS/
 - Sound controls with volume slider
 - System information and version details
 - Theme and animation toggles
+
+## Browser
+- fully working browser with serach machine
+- you can open every site (if you do the right setup)
 
 ## Color Scheme
 
