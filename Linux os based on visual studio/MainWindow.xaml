@@ -1,0 +1,162 @@
+﻿<Window x:Class="LinuxMintOS.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Linux Mint OS" 
+        WindowState="Maximized"
+        Background="#2d5016"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        PreviewMouseDown="Window_PreviewMouseDown">
+    <Window.Resources>
+        <Style x:Key="DesktopIconButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="6"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="IconBorder" Background="Transparent" CornerRadius="8" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="IconBorder" Property="Background" Value="#33223344"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="IconBorder" Property="Background" Value="#55223344"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <!-- Define Row Definitions FIRST -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+
+        <!-- Wallpaper Background -->
+        <Image Grid.Row="0" Grid.RowSpan="2" Source="Assets/wallpaper.jpg" Stretch="UniformToFill" />
+
+        <!-- Overlay for better readability -->
+        <Rectangle Grid.Row="0" Grid.RowSpan="2" Fill="#000000" Opacity="0.3"/>
+
+        <!-- Desktop Content -->
+        <Grid Grid.Row="0">
+            <StackPanel Margin="20" VerticalAlignment="Top">
+                <WrapPanel x:Name="DesktopAppsPanel">
+                    <Button Click="FileManager_Click" Style="{StaticResource DesktopIconButtonStyle}" Margin="8" Width="96" Height="110" FontSize="13">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                            <Image Source="Assets/files.png" Width="48" Height="48" Margin="0,0,0,8"/>
+                            <TextBlock Text="Files" HorizontalAlignment="Center" TextAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Click="Browser_Click" Style="{StaticResource DesktopIconButtonStyle}" Margin="8" Width="96" Height="110" FontSize="13">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                            <Image Source="Assets/browser.png" Width="48" Height="48" Margin="0,0,0,8"/>
+                            <TextBlock Text="Browser" HorizontalAlignment="Center" TextAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Click="Terminal_Click" Style="{StaticResource DesktopIconButtonStyle}" Margin="8" Width="96" Height="110" FontSize="13">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                            <Image Source="Assets/terminal.png" Width="48" Height="48" Margin="0,0,0,8"/>
+                            <TextBlock Text="Terminal" HorizontalAlignment="Center" TextAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Click="Settings_Click" Style="{StaticResource DesktopIconButtonStyle}" Margin="8" Width="96" Height="110" FontSize="13">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                            <Image Source="Assets/settings.png" Width="48" Height="48" Margin="0,0,0,8"/>
+                            <TextBlock Text="Settings" HorizontalAlignment="Center" TextAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Click="TextEditor_Click" Style="{StaticResource DesktopIconButtonStyle}" Margin="8" Width="96" Height="110" FontSize="13">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                            <Image Source="Assets/text-editor.png" Width="48" Height="48" Margin="0,0,0,8"/>
+                            <TextBlock Text="Text Editor" HorizontalAlignment="Center" TextAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </WrapPanel>
+            </StackPanel>
+            <Canvas x:Name="DesktopWindowLayer" Panel.ZIndex="30"/>
+        </Grid>
+
+        <!-- Taskbar -->
+        <Border x:Name="TaskbarBorder" Grid.Row="1" BorderThickness="0,1,0,0" BorderBrush="#66FFFFFF" Background="#CC101820">
+            <Grid x:Name="TaskbarGrid" Background="#CC1B2633">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0">
+                    <!-- Menu Button -->
+                    <Button x:Name="MenuButton" Content="🍃 Menu" Click="Menu_Click" Background="#AA2E7D32" Foreground="White" 
+                            Padding="15,5" Margin="5,0" FontWeight="Bold" Cursor="Hand"
+                            Style="{StaticResource ButtonStyle}"/>
+
+                    <!-- Taskbar Items -->
+                    <ItemsControl x:Name="TaskbarItems">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="10,0"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Button Content="{Binding}" Background="#333333" Foreground="White" 
+                                        Padding="10,5" Margin="5,0" Cursor="Hand"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+
+                <!-- Clock and System Tray -->
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,20,0">
+                    <TextBlock x:Name="ClockDisplay" Text="00:00" Foreground="#FFFFFFFF" FontSize="14" FontWeight="Bold" Margin="0,0,15,0"/>
+                    <TextBlock Text="🔊" FontSize="16" Margin="5,0"/>
+                    <TextBlock Text="🔋" FontSize="16" Margin="5,0"/>
+                    <TextBlock Text="📶" FontSize="16" Margin="5,0"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Mint-style start menu -->
+        <Border x:Name="MintMenuPanel"
+                Grid.Row="0"
+                Width="320"
+                Height="430"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Margin="14,0,0,16"
+                Visibility="Collapsed"
+                Background="#EE1A222C"
+                BorderBrush="#66FFFFFF"
+                BorderThickness="1"
+                CornerRadius="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal" Margin="14,12,14,10">
+                    <TextBlock Text="🍃" FontSize="18" Margin="0,0,8,0"/>
+                    <TextBlock Text="Linux OS" FontSize="18" FontWeight="SemiBold" Foreground="White"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Margin="12,6,12,10">
+                    <Button Content="📁 Files" Click="FileManager_Click" Background="#334CAF50" Margin="0,4,0,0" HorizontalContentAlignment="Left"/>
+                    <Button Content="🌐 Browser" Click="Browser_Click" Background="#332196F3" Margin="0,4,0,0" HorizontalContentAlignment="Left"/>
+                    <Button Content="⌨️ Terminal" Click="Terminal_Click" Background="#33445566" Margin="0,4,0,0" HorizontalContentAlignment="Left"/>
+                    <Button Content="⚙️ Settings" Click="Settings_Click" Background="#337A7A7A" Margin="0,4,0,0" HorizontalContentAlignment="Left"/>
+                    <Button Content="📝 Text Editor" Click="TextEditor_Click" Background="#339C6B3D" Margin="0,4,0,0" HorizontalContentAlignment="Left"/>
+                </StackPanel>
+
+                <Border Grid.Row="2" BorderBrush="#33FFFFFF" BorderThickness="0,1,0,0" Padding="12,10">
+                    <Button Content="⏻ Shutdown" Click="Shutdown_Click" Background="#AA8E2A2A" HorizontalContentAlignment="Left"/>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

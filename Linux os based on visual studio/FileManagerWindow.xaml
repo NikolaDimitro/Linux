@@ -1,0 +1,45 @@
+<Window x:Class="LinuxMintOS.FileManagerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="File Manager" 
+        Height="500" 
+        Width="800"
+        Background="#f0f0f0"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <!-- Toolbar -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Background="#e8e8e8" Margin="10,6,10,6">
+            <Button x:Name="HomeButton" Content="🏠 Home" Click="Home_Click" Background="#4CAF50" Foreground="White" 
+                    Padding="10,5" Margin="5" Cursor="Hand"/>
+            <Button x:Name="NewFolderButton" Content="📁 New Folder" Click="NewFolder_Click" Background="#2196F3" Foreground="White" 
+                    Padding="10,5" Margin="5" Cursor="Hand"/>
+            <Button x:Name="RefreshButton" Content="🔄 Refresh" Click="Refresh_Click" Background="#FF9800" Foreground="White" 
+                    Padding="10,5" Margin="5" Cursor="Hand"/>
+        </StackPanel>
+
+        <!-- File List -->
+        <ListBox Grid.Row="1" x:Name="FileListBox" Margin="10" Background="White" Foreground="Black">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="10" BorderThickness="0,0,0,1" BorderBrush="#e0e0e0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="📄" FontSize="16" Margin="0,0,10,0"/>
+                            <TextBlock Text="{Binding}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!-- Status Bar -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Background="#e8e8e8" Margin="10,0">
+            <TextBlock x:Name="StatusText" Text="Ready" Foreground="Black" VerticalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</Window>
