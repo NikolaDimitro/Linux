@@ -31,7 +31,7 @@ LinuxMintOS/
 
 - Visual Studio 2019 or later
 - .NET Framework 4.7.2 or higher
-- Windows OS
+- Windows OS, MacOs or Linux
 
 ## Installation & Setup
 
